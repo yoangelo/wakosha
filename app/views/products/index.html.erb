@@ -1,2 +1,18 @@
 <h1>事業一覧</h1>
 <%= link_to '新規登録', new_product_path, class: 'btn btn-primary' %>
+
+<div class='row'>
+    <% @products.each do |product| %>
+        <%= link_to product_path(id: product.id) do %>
+        <div class='col-md-4 mt-5'>
+            <div class='card' style='width: 18rem;'>
+                <%= image_tag 'no_image.png', class: 'card-img-top', size: '300x300' %>
+                <div class="card-body webkit-center">
+                    <h4><%= product.name %></h4>
+                    <p class="card-text"><%= product.descriprion %></p>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    <% end %>
+</div>
