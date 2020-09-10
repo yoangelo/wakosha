@@ -1,0 +1,4 @@
+<h1>従業員登録</h1>
+<%= link_to '従業員一覧', admin_users_path, class: 'btn btn-success' %>
+<%= link_to 'TOPにもどる', root_path, class: 'btn btn-primary' %>
+<%= render partial: 'form', locals: { user: @user } %>
