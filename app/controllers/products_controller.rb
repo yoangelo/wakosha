@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to @product, notice: "#{product.name}を登録しました。"
+      redirect_to @product, notice: "#{@product.name}を登録しました。"
     else
       render :new
     end
