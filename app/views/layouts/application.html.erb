@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Wakosha</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>Wakosha</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
-    <div class="container">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <div class="app-title navbar navbar-expand-md navbar-light bg-light">
+    <div class="navbar-brand">和光社</div>
+    <ul class="navbar-nav ml-auto">
+      <% if current_user.present? %>
+        <li class="nav-item"><%= link_to 'トップ',root_path, class: 'nav-link' %></li>
+        <li class="nav-item"><%= link_to 'ユーザー一覧',admin_users_path, class: 'nav-link' %></li>
+        <li class="nav-item"><%= link_to 'ログアウト',logout_path, method: :delete, class: 'nav-link' %></li>
+      <% else %>
+        <li class="nav-item"><%= link_to 'ログイン',login_path, class: 'nav-link' %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="container">
     <% if flash.notice.present? %>
-      <div class="alert alert-success">
+    <div class="alert alert-success">
       <%= flash.notice %>
-      </div>
+    </div>
     <% end %>
     <%= yield %>
   </div>
-  </body>
+</body>
+
 </html>
