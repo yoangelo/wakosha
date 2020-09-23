@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_action :login_required, only: [ :new, :create, :edit, :update, :destroy]
 
   def index
     @users = User.all
