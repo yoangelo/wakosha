@@ -1,0 +1,4 @@
+<h1>メンバーの登録</h1>
+<%= link_to 'TOPにもどる', root_path, class: 'btn btn-primary' %>
+<%= link_to 'メンバー一覧にもどる', members_path, class: 'btn btn-warning' %>
+<%= render partial: 'form', locals: { member: @member } %>

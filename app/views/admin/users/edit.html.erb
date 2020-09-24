@@ -1,4 +1,4 @@
 <h1><%= @user.name %>を編集する</h1>
-<%= link_to '従業員一覧', admin_users_path, class: 'btn btn-success' %>
+<%= link_to '管理者一覧にもどる', admin_users_path, class: 'btn btn-success' %>
 <%= link_to 'TOPにもどる', root_path, class: 'btn btn-primary' %>
 <%= render partial: 'form', locals: { user: @user } %>

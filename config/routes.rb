@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     resources :users
   end
   resources :products
+  resources :members
   root to: 'products#index'
 end

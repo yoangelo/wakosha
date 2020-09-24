@@ -1,0 +1,6 @@
+<%= link_to 'TOPにもどる', root_path, class: 'btn btn-primary' %>
+<%= link_to 'メンバー一覧にもどる', members_path, class: 'btn btn-warning' %>
+<h1><%= @member.name %></h1>
+<p><%= @member.description %></p>
+<%= link_to '編集', edit_member_path(id: @member.id), class: 'btn btn-outline-success' %>
+<%= link_to '削除', @member, method: :delete, data: { confirm: "「#{@member.name}」を削除します。よろしいですか？"}, class: 'btn btn-danger' %>

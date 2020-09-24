@@ -1,0 +1,4 @@
+<%= link_to 'TOPにもどる', members_path, class: 'btn btn-primary' %>
+<%= link_to 'メンバー一覧にもどる', members_path, class: 'btn btn-warning' %>
+<h1><%= @member.name %>を編集する</h1>
+<%= render partial: 'form', locals: { member: @member } %>
