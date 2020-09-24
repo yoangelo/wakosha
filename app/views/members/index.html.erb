@@ -1,0 +1,20 @@
+<h1>メンバー一覧</h1>
+<%= link_to '新規登録', new_member_path, class: 'btn btn-info' %>
+<%= link_to 'TOPにもどる', root_path, class: 'btn btn-primary' %>
+<div class='row'>
+    <% @members.each do |member| %>
+        <%= link_to member_path(id: member.id) do %>
+        <div class='col-md-4 mt-5'>
+            <div class='card' style='width: 18rem;'>
+                <%= image_tag 'no_image.png', class: 'card-img-top', size: '300x300' %>
+                <div class="card-body webkit-center">
+                    <h4><%= member.name %></h4>
+                    <p class="card-text"><%= member.description %></p>
+                    <%= link_to '編集', edit_member_path(id: member.id), class: 'btn btn-outline-success' %>
+                    <%= link_to '削除', member, method: :delete, data: { confirm: "「#{member.name}」を削除します。よろしいですか？"}, class: 'btn btn-danger' %>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    <% end %>
+</div>
