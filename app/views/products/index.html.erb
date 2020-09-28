@@ -4,19 +4,25 @@
 <%= link_to 'メンバー一覧', members_path, class: 'btn btn-warning' %>
 
 <div class='row'>
-    <% @products.each do |product| %>
-        <%= link_to product_path(id: product.id) do %>
-        <div class='col-md-4 mt-5'>
-            <div class='card' style='width: 18rem;'>
-                <%= image_tag 'no_image.png', class: 'card-img-top', size: '300x300' %>
-                <div class="card-body webkit-center">
-                    <h4><%= product.name %></h4>
-                    <p class="card-text"><%= product.description %></p>
-                    <%= link_to '編集', edit_product_path(id: product.id), class: 'btn btn-outline-success' %>
-                    <%= link_to '削除', product, method: :delete, data: { confirm: "「#{product.name}」を削除します。よろしいですか？"}, class: 'btn btn-danger' %>
-                </div>
-            </div>
+  <% @products.each do |product| %>
+    <%= link_to product_path(id: product.id) do %>
+      <div class='col-md-4 mt-5'>
+        <div class='card' style='width: 18rem;'>
+          <% if product.images.attached? %>
+            <% product.images.each do |image| %>
+              <%= image_tag image, class: 'card-img-top', size: '300x300' %>
+            <% end %>
+          <% else %>
+            <%= image_tag 'no_image.png', class: 'card-img-top', size: '300x300' %>
+          <% end %>
+          <div class="card-body webkit-center">
+            <h4><%= product.name %></h4>
+            <p class="card-text"><%= product.description %></p>
+            <%= link_to '編集', edit_product_path(id: product.id), class: 'btn btn-outline-success' %>
+            <%= link_to '削除', product, method: :delete, data: { confirm: "「#{product.name}」を削除します。よろしいですか？"}, class: 'btn btn-danger' %>
+          </div>
         </div>
-        <% end %>
+      </div>
     <% end %>
+  <% end %>
 </div>
